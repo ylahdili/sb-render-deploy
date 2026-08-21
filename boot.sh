@@ -1,8 +1,11 @@
 #!/bin/sh
 set -e
 
+# 1. Guarantee the target directory exists before doing anything
+mkdir -p /space
+
 # /space is ephemeral on Render Free.
-# Restore from GitHub on every cold start.
+# 2. Restore from GitHub on every cold start.
 if [ ! -d /space/.git ]; then
   echo "[boot] Empty /space — cloning full history from GitHub..."
   
